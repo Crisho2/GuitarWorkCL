@@ -285,6 +285,73 @@
             }
         }
 
+        /* Sección Acerca de */
+.about-section {
+    position: relative;
+    min-height: 60vh;
+    padding: 100px 5%;
+    background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.about-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: auto;
+    z-index: 1;
+    position: relative;
+}
+
+.about-title {
+    font-size: 4rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 2rem;
+    color: #fff;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.about-text {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #ccc;
+    line-height: 1.8;
+    white-space: pre-line;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease 0.5s forwards;
+}
+
+@media (max-width: 768px) {
+    .about-title {
+        font-size: 2.5rem;
+        letter-spacing: 3px;
+    }
+
+    .about-text {
+        font-size: 1.2rem;
+    }
+}
+
+
+
+
+
         /* Sección de contacto */
         .contact-section {
             min-height: 100vh;
@@ -454,6 +521,19 @@
         </div>
     </div>
 
+    /*<!-- Sección Acerca de -->*/
+    <section id="about" class="about-section">
+        <div class="about-particles"></div>
+        <div class="about-container">
+            <h2 class="about-title">Acerca de</h2>
+            <p class="about-text">
+                “Una forma de desarrollar una relación con la guitarra,<br>
+                una forma de desarrollar una relación con la música<br>
+                una forma de desarrollar una relación con uno mismo”
+            </p>
+        </div>
+    </section>
+
     <!-- Sección de Contacto -->
     <section id="contact" class="contact-section">
         <div class="contact-container">
@@ -487,6 +567,7 @@
     </section>
 
     <script>
+
         // Crear partículas animadas
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
@@ -502,6 +583,21 @@
             }
         }
 
+        function createAboutParticles() {
+    const aboutParticles = document.querySelector('.about-particles');
+    const particleCount = 40;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        aboutParticles.appendChild(particle);
+    }
+}
+
+
         // Efecto parallax suave
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
@@ -511,17 +607,19 @@
 
         // Animación de entrada mejorada
         window.addEventListener('load', () => {
-            createParticles();
-            
-            // Animación escalonada para elementos
-            const elements = document.querySelectorAll('.hero-title, .hero-subtitle');
-            elements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, index * 200);
-            });
-        });
+    createParticles();
+    createAboutParticles();
+
+    // Animación escalonada para elementos
+    const elements = document.querySelectorAll('.hero-title, .hero-subtitle');
+    elements.forEach((el, index) => {
+        setTimeout(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }, index * 200);
+    });
+});
+
 
         // Navegación suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
