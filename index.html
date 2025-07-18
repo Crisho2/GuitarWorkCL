@@ -57,13 +57,55 @@
             align-items: center;
             width: 100%;
             max-width: 1200px;
-            justify-content: space-between;
+            position: relative;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 4rem;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .nav-menu li {
+            display: flex;
+        }
+
+        .nav-menu a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 300;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #fff;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
         }
 
         .social-links {
             display: flex;
             gap: 1.5rem;
             align-items: center;
+            position: absolute;
+            right: 0;
         }
 
         .social-links a {
@@ -99,40 +141,6 @@
 
         .logo-icon:hover {
             transform: scale(1.1);
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 4rem;
-        }
-
-        .nav-menu a {
-            color: #ccc;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 300;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-menu a:hover {
-            color: #fff;
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: #fff;
-            transition: width 0.3s ease;
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
         }
 
         .hero-content {
@@ -199,9 +207,7 @@
             50% { transform: translateY(-20px); }
         }
 
-
-
-            @media (max-width: 768px) {
+        @media (max-width: 768px) {
             .hero-section {
                 padding: 0 3%;
             }
@@ -227,6 +233,11 @@
             .nav-container {
                 flex-direction: column;
                 gap: 2rem;
+            }
+
+            .social-links {
+                position: static;
+                justify-content: center;
             }
 
             .logo-icon {
@@ -324,11 +335,11 @@
         
         <nav class="navigation">
             <div class="nav-container">
-                <div class="nav-menu">
+                <ul class="nav-menu">
                     <li><a href="#portfolio">Portafolio</a></li>
                     <li><a href="#about">Acerca de</a></li>
                     <li><a href="#contact">Contacto</a></li>
-                </div>
+                </ul>
                 <div class="social-links">
                     <a href="#" aria-label="Facebook">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -358,8 +369,6 @@
             <div class="floating-dot"></div>
             <div class="floating-dot"></div>
         </div>
-
-
     </div>
 
     <script>
